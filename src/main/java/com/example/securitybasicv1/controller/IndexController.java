@@ -36,7 +36,6 @@ public class IndexController {
         return "/manager";
     }
 
-    //스프링시큐리티 해당주소를 낚아채버린다. -- Security Config파일 생성후 작동 안함
     @GetMapping("/loginForm")
     public String loginForm() {
         return "/loginForm";
