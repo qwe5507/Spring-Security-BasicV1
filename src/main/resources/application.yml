@@ -30,7 +30,10 @@ spring:
     oauth2:
       client:
         registration:
-          google:
+          google: # /oauth2/authorization/google 이 주소를 동작하게 한다.
             client-id: 비밀
             client-secret: 비밀
             scope:
+            - email
+            - profile
+
