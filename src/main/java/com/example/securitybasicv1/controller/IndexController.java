@@ -24,7 +24,7 @@ import java.security.Principal;
 public class IndexController {
 
     private final UserRepository userRepository;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
     @GetMapping("/test/login")
     public @ResponseBody String testLogin(Authentication authentication, @AuthenticationPrincipal PrincipalDetails userDetails) { //DI(의존성 주입)
@@ -35,7 +35,6 @@ public class IndexController {
         System.out.println("userDetails = " + userDetails.getUser());
         return "세션 정보 확인하기";
     }
-
 
     @GetMapping("/test/oauth/login")
     public @ResponseBody String testOAuthLogin(Authentication authentication, @AuthenticationPrincipal OAuth2User oauth) { //DI(의존성 주입)
@@ -53,8 +52,11 @@ public class IndexController {
         return "/index";
     }
 
+    //OAuth 로그인을 해도 PrincipalDetails
+    //일반 로그인을 해도 PrincipalDetails
     @GetMapping("/user")
     public @ResponseBody String user(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+        System.out.println("principalDetails = " + principalDetails.getUser());
         return "/user";
     }
 

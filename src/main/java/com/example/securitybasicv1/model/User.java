@@ -2,7 +2,9 @@ package com.example.securitybasicv1.model;
 
 // ORM - Object Relation Mapping
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.Entity;
@@ -13,7 +15,19 @@ import java.sql.Timestamp;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class User {
+    @Builder
+    public User( String username, String password, String email, String role, String provider, String providerId, Timestamp createDate) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.role = role;
+        this.provider = provider;
+        this.providerId = providerId;
+        this.createDate = createDate;
+    }
+
     @Id // primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -26,4 +40,5 @@ public class User {
     private String providerId;
     @CreationTimestamp
     private Timestamp createDate;
+
 }
