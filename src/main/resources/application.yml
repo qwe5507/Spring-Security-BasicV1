@@ -36,4 +36,10 @@ spring:
             scope:
             - email
             - profile
-
+            -
+          facebook:  # /oauth2/authorization/facebook 이 주소를 동작하게 한다.
+            client-id: 비밀
+            client-secret: 비밀
+            scope:
+              - email
+              - public_profile
